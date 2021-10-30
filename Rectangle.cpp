@@ -22,6 +22,149 @@ using namespace std;
 //       setColor, setColorTopLeft, getColorTopLeft, setColorTopRight,
 //       getColorTopRight, setColorBottomRight, getColorBottomRight,
 //       setColorBottomLeft, getColorBottomLeft, read, write.
+Rectangle::Rectangle() {
+    
+}
+
+/**
+ * Requires: Nothing.
+ * Modifies: start, end, colorTopLeft, colorTopRight, colorBottomRight,
+ *           colorBottomLeft.
+ * Effects:  Overloaded contructor. Sets start, end and single color.
+ */
+Rectangle::Rectangle(Point pt1, Point pt2, Color color) {
+    
+}
+
+/**
+ * Requires: Nothing.
+ * Modifies: start, end, colorTopLeft, colorTopRight, colorBottomRight,
+ *           colorBottomLeft.
+ * Effects:  Overloaded contructor. Sets start, end and four colors.
+ */
+Rectangle::Rectangle(Point pt1, Point pt2, Color cTopLeft, Color cTopRight,
+                     Color cBottomRight, Color cBottomLeft) {
+    
+}
+
+
+void Rectangle::setStart(Point pt) {
+    
+}
+
+
+Point Rectangle::getStart() {
+    
+    return start;
+}
+
+
+void Rectangle::setEnd(Point pt) {
+    
+}
+
+
+Point Rectangle::getEnd() {
+    
+    return end;
+}
+
+
+void Rectangle::setColor(Color color) {
+    
+    
+}
+
+
+void Rectangle::setColorTopLeft(Color color) {
+    
+}
+
+    
+Color Rectangle::getColorTopLeft() {
+    return colorTopLeft;
+}
+
+/**
+ * Requires: Nothing.
+ * Modifies: colorTopRight.
+ * Effects:  Sets top right color of rectangle.
+ */
+void Rectangle::setColorTopRight(Color color) {
+    
+}
+
+/**
+ * Requires: Nothing.
+ * Modifies: Nothing.
+ * Effects:  Returns top right color of rectangle.
+ */
+Color Rectangle::getColorTopRight() {
+    
+    return colorTopRight;
+}
+
+/**
+ * Requires: Nothing.
+ * Modifies: colorBottomRight.
+ * Effects:  Sets bottom rihgt color of rectangle.
+ */
+void Rectangle::setColorBottomRight(Color color) {
+    
+}
+
+/**
+ * Requires: Nothing.
+ * Modifies: Nothing.
+ * Effects:  Returns bottom right color of rectangle.
+ */
+Color Rectangle::getColorBottomRight() {
+    
+    return colorBottomRight;
+}
+
+/**
+ * Requires: Nothing.
+ * Modifies: colorBottomLeft.
+ * Effects:  Sets bottom left color of rectangle.
+ */
+void Rectangle::setColorBottomLeft(Color c) {
+    
+}
+
+/**
+ * Requires: Nothing.
+ * Modifies: Nothing.
+ * Effects:  Returns bottom left color of rectangle.
+ */
+Color Rectangle::getColorBottomLeft() {
+    
+    return colorBottomLeft;
+}
+
+/**
+ * Requires: ins is in good state.
+ * Modifies: ins, start, end, colorTopLeft, colorTopRight,
+ *           colorBottomRight, colorBottomLeft.
+ * Effects:  Reads rectangle in forms
+ *           start end color
+ *           start end cTopLeft cTopRight cBottomRight cBottomLeft
+ */
+void Rectangle::read(istream& ins) {
+    
+}
+
+/**
+ * Requires: outs is in good state.
+ * Modifies: outs.
+ * Effects:  Writes rectangle in form
+ *           start end cTopLeft cTopRight cBottomRight cBottomLeft
+ */
+void Rectangle::write(ostream& outs) {
+    
+}
+
+
 
 
 

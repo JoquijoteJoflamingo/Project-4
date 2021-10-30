@@ -20,6 +20,58 @@ using namespace std;
 
 // TODO: implement two constructors, setCenter, getCenter, setColor, getColor,
 //       setRadius, getRadius, read, write.
+Circle::Circle() {
+    
+}
+
+Circle::Circle(Point pt, int r, Color c) {
+    
+}
+
+void Circle::setCenter(Point pt) {
+    
+}
+
+Point Circle::getCenter() {
+    
+    return center;
+}
+
+
+void Circle::setRadius(int r) {
+    
+    
+}
+
+
+int Circle::getRadius() {
+    
+    
+    return 0;
+}
+
+
+void Circle::setColor(Color c) {
+    
+}
+
+
+Color Circle::getColor() {
+    
+    return color;
+}
+
+
+void Circle::read(istream& ins) {
+    
+}
+
+
+void Circle::write(ostream& outs) {
+    
+}
+
+
 
 
 

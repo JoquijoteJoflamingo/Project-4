@@ -17,6 +17,62 @@
 // TODO: implement two Line constructors, setStart, getStart, setEnd,
 //       getEnd, setColor, getColor, read, write.
 
+Line::Line() {
+    
+}
+
+/**
+ * Requires: Nothing.
+ * Modifies: Nothing.
+ * Effects:  Overloaded contructor. Sets color, start to pt1, end to pt2.
+ */
+Line::Line(Point pt1, Point pt2, Color color) {
+    
+}
+
+
+void Line::setStart(Point pt) {
+    
+}
+
+
+Point Line::getStart() {
+    
+    return start;
+}
+
+void Line::setEnd(Point pt) {
+    
+}
+
+
+Point Line::getEnd() {
+    
+    return end;
+}
+
+
+void Line::setColor(Color color) {
+    
+}
+
+
+Color Line::getColor() {
+    
+    return lineColor;
+}
+
+
+void Line::read(istream& ins) {
+    
+}
+
+
+void Line::write(ostream& outs) {
+    
+}
+
+
 
 
 // Your code goes above this line.

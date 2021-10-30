@@ -23,7 +23,30 @@
 using namespace std;
 
 // TODO: implement constructor, clear, setPixel, initArray.
+Graphics::Graphics() {
+    
+}
 
+/**
+ * Requires: Nothing.
+ * Modifies: pixelData.
+ * Effects:  Sets all pixels to black.
+ * Note: you will want to implement the private
+ *  member function initArray before implementing
+ *  clear()
+ */
+void Graphics::clear() {
+    
+}
+
+
+void Graphics::setPixel(int x, int y, Color color) {
+    
+}
+
+void Graphics::initArray() {
+    
+}
 
 
 // Your code goes above this line.
