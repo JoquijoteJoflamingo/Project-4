@@ -56,7 +56,8 @@ void Point::read(istream& ins) {
         if (getline(ins, coordinate)) {
             xValue = coordinate.substr(1, coordinate.find(delimiter) - 1);
             yValue = coordinate
-                    .substr(coordinate.find(delimiter) + 1, coordinate.find(")") - coordinate.find(delimiter) - 1);
+                    .substr(coordinate.find(delimiter) + 1,
+                    coordinate.find(")") - coordinate.find(delimiter) - 1);
         }
         x = checkRange(stoi(xValue));
         y = checkRange(stoi(yValue));
