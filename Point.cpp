@@ -46,24 +46,13 @@ void Point::setY(int yVal) {
 int Point::getY() {
     return y;
 }
-
+//😀
 void Point::read(istream& ins) {
-    string coordinate;
-    string delimiter = ",";
-    string xValue;
-    string yValue;
-    if (!ins.fail()) {
-        if (getline(ins, coordinate)) {
-            xValue = coordinate.substr(1, coordinate.find(delimiter) - 1);
-            yValue = coordinate
-                    .substr(coordinate.find(delimiter) + 1,
-                    coordinate.find(")") - coordinate.find(delimiter) - 1);
-        }
-        x = checkRange(stoi(xValue));
-        y = checkRange(stoi(yValue));
-    }
-   
-    return;
+    char trash;
+    ins >> trash >> x >> trash >> y >> trash;
+    
+    x = checkRange(x);
+    y = checkRange(y);
 }
 
 void Point::write(ostream& outs) {

@@ -25,11 +25,14 @@ Circle::Circle() {
 }
 
 Circle::Circle(Point pt, int r, Color c) {
+    center = pt;
+    radius = checkRadius(r);
+    color = c;
     
 }
 
 void Circle::setCenter(Point pt) {
-    
+    center = pt;
 }
 
 Point Circle::getCenter() {
@@ -39,7 +42,7 @@ Point Circle::getCenter() {
 
 
 void Circle::setRadius(int r) {
-    
+    radius = checkRadius(r);
     
 }
 
@@ -47,12 +50,12 @@ void Circle::setRadius(int r) {
 int Circle::getRadius() {
     
     
-    return 0;
+    return radius;
 }
 
 
 void Circle::setColor(Color c) {
-    
+    color = c;
 }
 
 
@@ -63,12 +66,13 @@ Color Circle::getColor() {
 
 
 void Circle::read(istream& ins) {
-    
+    ins >> center >> radius >> color;
+    radius = checkRadius(radius);
 }
 
 
 void Circle::write(ostream& outs) {
-    
+    outs << center << radius << color;
 }
 
 

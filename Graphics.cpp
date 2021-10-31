@@ -24,28 +24,28 @@ using namespace std;
 
 // TODO: implement constructor, clear, setPixel, initArray.
 Graphics::Graphics() {
-    
+    initArray();
 }
 
-/**
- * Requires: Nothing.
- * Modifies: pixelData.
- * Effects:  Sets all pixels to black.
- * Note: you will want to implement the private
- *  member function initArray before implementing
- *  clear()
- */
 void Graphics::clear() {
-    
+    initArray();
 }
 
 
 void Graphics::setPixel(int x, int y, Color color) {
-    
+    if ((0 <= x) && (x < DIMENSION) && (0 <= y) && (y < DIMENSION)) {
+        pixelData[y][x] = color;
+    }
 }
 
 void Graphics::initArray() {
-    
+    for (int i = 0; i < DIMENSION; i++) {
+        for (int j = 0; j < DIMENSION; j++) {
+            pixelData[i][j].setRed(0);
+            pixelData[i][j].setGreen(0);
+            pixelData[i][j].setBlue(0);
+        }
+    }
 }
 
 

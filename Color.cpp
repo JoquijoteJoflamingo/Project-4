@@ -17,57 +17,78 @@
 //       setGreen, getGreen, setBlue, getBlue, read, write.
 
 int Color::checkRange(int val) {
-    return 0;
+    int maxColorValue = 255;
+    if ((0 <= val) && (val <= maxColorValue)) {
+        return val;
+    }
+    else if (val < 0) {
+        return 0;
+    }
+    else {
+        return maxColorValue;
+    }
 }
 Color::Color() {
-    
+    red = 0;
+    blue = 0;
+    green = 0;
 }
 
 
 Color::Color(int redVal, int greenVal, int blueVal) {
-    
+    red = checkRange(redVal);
+    green = checkRange(greenVal);
+    blue = checkRange(blueVal);
 }
 
 
 void Color::setRed(int redVal){
-    
+    red = checkRange(redVal);
 }
 
 
 int Color::getRed() {
     
-    return 0;
+    return red;
 }
 
 
 void Color::setGreen(int greenVal) {
     
+    green = checkRange(greenVal);
 }
 
 
 int Color::getGreen() {
     
-    return 0;
+    return green;
 }
 
 
 void Color::setBlue(int blueVal) {
     
+    blue = checkRange(blueVal);
 }
 
 
 int Color::getBlue() {
     
-    return 0;
+    return blue;
 }
 
 
 void Color::read(istream& ins) {
-    
+    if (!ins.fail()) {
+        ins >> red >> green >> blue;
+    }
+    red = checkRange(red);
+    green = checkRange(green);
+    blue = checkRange(blue);
 }
 
 
 void Color::write(ostream& outs) {
+    outs << red << " " << green << " " << blue;
     
 }
 

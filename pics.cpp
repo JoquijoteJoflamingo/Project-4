@@ -131,22 +131,76 @@ void coolPics()
     return;
 }
 
-void writeFile(const Graphics& drawer)
-{
-    // TODO: implement
-    // This will make use of Graphics::writeFile()
+void writeFile(const Graphics& drawer) {
+    string fileName;
+    cin >> fileName;
+    fileName += ".bmp";
+    drawer.writeFile(fileName);
+    cout << "[Wrote " << fileName << "]" << endl;
 }
 
 void loadFile(Graphics& drawer)
 {
-    // TODO: implement
+    string fileName;
+    cin >> fileName;
+    fileName += ".txt";
+    char fill;
+    string trash;
+    
+    
+    ifstream input_file;
+    input_file.open(fileName);
+    drawer.clear();
+    
+    
+    input_file >> fill;
+    while(!input_file.fail()) {
+        switch (fill) {
+            case 'L': {
+                Line line1;
+                line1.read(input_file);
+                line1.draw(drawer);
+                break;
+            }
+            case 'T': {
+                Triangle triangle1;
+                triangle1.read(input_file);
+                triangle1.draw(drawer);
+                break;
+            }
+            case 'C': {
+                Circle circle1;
+                circle1.read(input_file);
+                circle1.draw(drawer);
+                break;
+            }
+            case 'R': {
+                Rectangle rectangle1;
+                rectangle1.read(input_file);
+                rectangle1.draw(drawer);
+                break;
+            }
+            default:
+                drawer.clear();
+                getline(input_file, trash);
+                cout << "Error in input file: " << fill << trash << endl;
+                break;
+        }
+        input_file >> fill;
+    }
+    input_file.close();
+    cout << "[Loaded " << fileName << "]" << endl;
 }
 
 string tolower(string str)
 {
-    // TODO: implement
+    string out = "";
+    for (int i = 0; i < str.size(); i++) {
+        char c = str.at(i);
+        out += tolower(c);
+    }
 
-    return str;
+    return out;
 }
 
 

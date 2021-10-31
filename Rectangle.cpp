@@ -16,6 +16,7 @@
 #include "Triangle.h"
 #include "Graphics.h"
 #include <algorithm>
+#include <sstream>
 using namespace std;
 
 // TODO: implement three constructors, setStart, getStart, setEnd, getEnd,
@@ -33,7 +34,9 @@ Rectangle::Rectangle() {
  * Effects:  Overloaded contructor. Sets start, end and single color.
  */
 Rectangle::Rectangle(Point pt1, Point pt2, Color color) {
-    
+    start = pt1;
+    end = pt2;
+    colorTopRight = colorTopLeft = colorBottomLeft = colorBottomRight = color;
 }
 
 /**
@@ -44,12 +47,17 @@ Rectangle::Rectangle(Point pt1, Point pt2, Color color) {
  */
 Rectangle::Rectangle(Point pt1, Point pt2, Color cTopLeft, Color cTopRight,
                      Color cBottomRight, Color cBottomLeft) {
-    
+    start = pt1;
+    end = pt2;
+    colorTopLeft = cTopLeft;
+    colorTopRight = cTopRight;
+    colorBottomRight = cBottomRight;
+    colorBottomLeft = cBottomLeft;
 }
 
 
 void Rectangle::setStart(Point pt) {
-    
+    start = pt;
 }
 
 
@@ -60,7 +68,7 @@ Point Rectangle::getStart() {
 
 
 void Rectangle::setEnd(Point pt) {
-    
+    end = pt;
 }
 
 
@@ -71,13 +79,12 @@ Point Rectangle::getEnd() {
 
 
 void Rectangle::setColor(Color color) {
-    
-    
+    colorTopRight = colorTopLeft = colorBottomLeft = colorBottomRight = color;
 }
 
 
 void Rectangle::setColorTopLeft(Color color) {
-    
+    colorTopLeft = color;
 }
 
     
@@ -91,7 +98,7 @@ Color Rectangle::getColorTopLeft() {
  * Effects:  Sets top right color of rectangle.
  */
 void Rectangle::setColorTopRight(Color color) {
-    
+    colorTopRight = color;
 }
 
 /**
@@ -110,7 +117,7 @@ Color Rectangle::getColorTopRight() {
  * Effects:  Sets bottom rihgt color of rectangle.
  */
 void Rectangle::setColorBottomRight(Color color) {
-    
+    colorBottomRight = color;
 }
 
 /**
@@ -129,7 +136,7 @@ Color Rectangle::getColorBottomRight() {
  * Effects:  Sets bottom left color of rectangle.
  */
 void Rectangle::setColorBottomLeft(Color c) {
-    
+    colorBottomLeft = c;
 }
 
 /**
@@ -151,7 +158,25 @@ Color Rectangle::getColorBottomLeft() {
  *           start end cTopLeft cTopRight cBottomRight cBottomLeft
  */
 void Rectangle::read(istream& ins) {
-    
+    Color color;
+    string fullLine;
+
+    getline(ins, fullLine);
+    istringstream istr(fullLine);
+    int count = 0;
+    for (int i = 0; i < fullLine.size(); i++) {
+        if (fullLine.at(i) == ' ') {
+            count++;
+        }
+    }
+    if (count < 8) {
+        istr >> start >> end >> color;
+        setColor(color);
+    }
+    else {
+        istr >> start >> end >> colorTopLeft >> colorTopRight
+        >> colorBottomRight >> colorBottomLeft;
+    }
 }
 
 /**
@@ -161,7 +186,8 @@ void Rectangle::read(istream& ins) {
  *           start end cTopLeft cTopRight cBottomRight cBottomLeft
  */
 void Rectangle::write(ostream& outs) {
-    
+    outs << start << end << colorTopLeft << colorTopRight
+    << colorBottomRight << colorBottomLeft;
 }
 
 

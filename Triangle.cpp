@@ -15,6 +15,7 @@
 #include "Graphics.h"
 #include "Shape.h"
 #include <cmath>
+#include <sstream>
 using namespace std;
 
 // TODO: implement three constructors, setColor, setVertexOne, getVertexOne,
@@ -35,7 +36,10 @@ Triangle::Triangle() {
  *           colors to one single color.
  */
 Triangle::Triangle(Point pt1, Point pt2, Point pt3, Color color) {
-    
+    vertexOne = pt1;
+    vertexTwo = pt2;
+    vertexThree = pt3;
+    vertexOneColor = vertexTwoColor = vertexThreeColor = color;
 }
 
 /**
@@ -47,7 +51,14 @@ Triangle::Triangle(Point pt1, Point pt2, Point pt3, Color color) {
 Triangle::Triangle(Point pt1, Color color1,
          Point pt2, Color color2,
                    Point pt3, Color color3) {
+    vertexOne = pt1;
+    vertexOneColor = color1;
     
+    vertexTwo = pt2;
+    vertexTwoColor = color2;
+    
+    vertexThree = pt3;
+    vertexThreeColor = color3;
 }
 
 /**
@@ -56,7 +67,7 @@ Triangle::Triangle(Point pt1, Color color1,
  * Effects:  Sets all three colors of triangle.
  */
 void Triangle::setColor(Color color) {
-    
+    vertexOneColor = vertexTwoColor = vertexThreeColor = color;
 }
 
 /**
@@ -65,7 +76,7 @@ void Triangle::setColor(Color color) {
  * Effects:  Sets vertex one of triangle.
  */
 void Triangle::setVertexOne(Point pt) {
-    
+    vertexOne = pt;
 }
 
 /**
@@ -74,7 +85,6 @@ void Triangle::setVertexOne(Point pt) {
  * Effects:  Returns vertex one of triangle.
  */
 Point Triangle::getVertexOne() {
-    
     return vertexOne;
 }
 
@@ -84,7 +94,7 @@ Point Triangle::getVertexOne() {
  * Effects:  Sets color of vertex one of triangle.
  */
 void Triangle::setVertexOneColor(Color color) {
-    
+    vertexOneColor = color;
 }
 
 /**
@@ -103,7 +113,7 @@ Color Triangle::getVertexOneColor() {
  * Effects:  Sets vertex two of triangle.
  */
 void Triangle::setVertexTwo(Point pt) {
-    
+    vertexTwo = pt;
 }
 
 /**
@@ -112,8 +122,6 @@ void Triangle::setVertexTwo(Point pt) {
  * Effects:  Returns vertex two of triangle.
  */
 Point Triangle::getVertexTwo() {
-    
-    
     return vertexTwo;
 }
 
@@ -123,7 +131,7 @@ Point Triangle::getVertexTwo() {
  * Effects:  Sets color of vertex two of triangle.
  */
 void Triangle::setVertexTwoColor(Color color) {
-    
+    vertexTwoColor = color;
 }
 
 /**
@@ -142,7 +150,7 @@ Color Triangle::getVertexTwoColor() {
  * Effects:  Sets vertex three of triangle.
  */
 void Triangle::setVertexThree(Point pt) {
-    
+    vertexThree = pt;
 }
 
 /**
@@ -161,7 +169,7 @@ Point Triangle::getVertexThree() {
  * Effects:  Sets color of vertex three of triangle.
  */
 void Triangle::setVertexThreeColor(Color color) {
-    
+    vertexThreeColor = color;
 }
 
 /**
@@ -183,6 +191,25 @@ Color Triangle::getVertexThreeColor() {
  *           v1 v1Color v2 v2Color v3 v3Color
  */
 void Triangle::read(istream& ins) {
+    Color color;
+    string fullLine;
+
+    getline(ins, fullLine);
+    istringstream istr(fullLine);
+    int count = 0;
+    for (int i = 0; i < fullLine.size(); i++) {
+        if (fullLine.at(i) == ' ') {
+            count++;
+        }
+    }
+    if (count < 11) {
+        istr >> vertexOne >> vertexTwo >> vertexThree >> color;
+        setColor(color);
+    }
+    else {
+        istr >> vertexOne >> vertexOneColor >> vertexTwo >> vertexTwoColor
+        >> vertexThree >> vertexThreeColor;
+    }
     
 }
 
@@ -193,7 +220,8 @@ void Triangle::read(istream& ins) {
  *           v1 v1Color v2 v2Color v3 v3Color
  */
 void Triangle::write(ostream& outs) {
-    
+    outs << vertexOne << vertexOneColor << vertexTwo << vertexTwoColor
+    << vertexThree << vertexThreeColor;
 }
 
 

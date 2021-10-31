@@ -32,12 +32,16 @@ void test_Line();
 void test_Point();
 void test_Rectangle();
 void test_Triangle();
+void test_Graphics();
 
 void startTests() {
+    test_Circle();
+    test_Color();
+    test_Line();
     test_Point();
-    
-    // call other test functions here
-    
+    test_Triangle();
+    test_Graphics();
+    test_Rectangle();
     return;
 }
 
@@ -64,5 +68,110 @@ void test_Point() {
     return;
 }
 
+void test_Color() {
+    Color color1;
+    
+    ifstream input_file;
+    input_file.open("data2.txt");
+    color1.read(input_file);
+    cout << "Expected: (9,9,9), Actual: " << color1 << endl;
+    
+    
+    // TO DO: test cases getRed etc.
+    return;
+}
 
+void test_Graphics() {
+    Graphics graphics1;
+    Color color1(255, 0, 0);
+    graphics1.setPixel(45, 2, color1);
+    graphics1.writeFile("testGraphics.bmp");
+}
 
+void test_Line() {
+    Line line1;
+    char fill;
+    string trash;
+    
+    
+    ifstream input_file;
+    input_file.open("data1.txt");
+    
+    input_file >> fill;
+    while(!input_file.fail()) {
+        if (fill == 'L') {
+            line1.read(input_file);
+            cout << fill << line1 << endl;
+        }
+        else {
+            getline(input_file, trash);
+        }
+        input_file >> fill;
+    }
+}
+
+void test_Triangle() {
+    Triangle triangle1;
+    char fill;
+    string trash;
+    
+    
+    ifstream input_file;
+    input_file.open("data1.txt");
+    
+    input_file >> fill;
+    while(!input_file.fail()) {
+        if (fill == 'T') {
+            triangle1.read(input_file);
+            cout << fill << triangle1 << endl;
+        }
+        else {
+            getline(input_file, trash);
+        }
+        input_file >> fill;
+    }
+}
+
+void test_Circle() {
+    Circle circle1;
+    char fill;
+    string trash;
+    
+    
+    ifstream input_file;
+    input_file.open("data1.txt");
+    
+    input_file >> fill;
+    while(!input_file.fail()) {
+        if (fill == 'C') {
+            circle1.read(input_file);
+            cout << fill << circle1 << endl;
+        }
+        else {
+            getline(input_file, trash);
+        }
+        input_file >> fill;
+    }
+}
+
+void test_Rectangle() {
+    Rectangle rectangle1;
+    char fill;
+    string trash;
+    
+    
+    ifstream input_file;
+    input_file.open("data1.txt");
+    
+    input_file >> fill;
+    while(!input_file.fail()) {
+        if (fill == 'R') {
+            rectangle1.read(input_file);
+            cout << fill << rectangle1 << endl;
+        }
+        else {
+            getline(input_file, trash);
+        }
+        input_file >> fill;
+    }
+}

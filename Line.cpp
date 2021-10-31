@@ -27,33 +27,33 @@ Line::Line() {
  * Effects:  Overloaded contructor. Sets color, start to pt1, end to pt2.
  */
 Line::Line(Point pt1, Point pt2, Color color) {
-    
+    start = pt1;
+    end = pt2;
+    lineColor = color;
 }
 
 
 void Line::setStart(Point pt) {
-    
+    start = pt;
 }
 
 
 Point Line::getStart() {
-    
     return start;
 }
 
 void Line::setEnd(Point pt) {
-    
+    end = pt;
 }
 
 
 Point Line::getEnd() {
-    
     return end;
 }
 
 
 void Line::setColor(Color color) {
-    
+    lineColor = color;
 }
 
 
@@ -64,12 +64,14 @@ Color Line::getColor() {
 
 
 void Line::read(istream& ins) {
-    
+    if (!ins.fail()) {
+        ins >> start >> end >> lineColor;
+    }
 }
 
 
 void Line::write(ostream& outs) {
-    
+    outs << start << end << lineColor;
 }
 
 
